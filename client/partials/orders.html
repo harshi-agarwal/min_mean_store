@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="" style="color:lightblue;">
+      <h2>Place a order</h2>
+    </div>
+
+    <div ng-controller="ordersController">
+      <h2>{{error}}</h2>
+
+      <form class="form-horizontal">
+        <div class="form-group">
+
+          <label class="col-xs-3 control-label" for="customer">Select customer:</label>
+          <div class="col-xs-2">
+
+
+          <select class="form-control" style="width:auto;" ng-model="neworder.customer" >
+              <option ng-repeat="customer in customers" value={{customer._id}} >{{customer.name}}</option>
+          </select>
+          </div>
+        </div>
+        <div class="form-group">
+
+          <label class="col-xs-3 control-label" for="product">Select product:</label>
+          <div class="col-xs-2">
+
+          <select class="form-control" style="width:auto;" ng-model="neworder.product" >
+                <option ng-repeat="product in products" value={{product._id}} >{{product.name}}</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="form-group">
+
+        <label class="col-xs-3 control-label" for="quantity">Select quantity:</label>
+        <div class="col-xs-2">
+          <select class="form-control" style="width:auto;" ng-model="neworder.quantity" >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        </div>
+      </div>
+      <div class="form-group">
+    <div class="col-xs-offset-3 col-sm-10">
+      <button type="submit" class="btn btn-default" ng-click="create()">create a order</button>
+    </div>
+  </div>
+</form>
+    <table class="table table-bordered table-responsive">
+      <thead>
+        <tr >
+          <th >
+            Customer_name
+          </th>
+          <th>
+            Product Name
+          </th>
+          <th>
+            Quantity ordered
+          </th>
+          <th>
+            Order time
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="order in orders">
+          <td>
+            {{order._customer.name}}
+          </td>
+          <td>
+            {{order._product.name}}
+          </td>
+          <td>
+            {{order.quantity}}
+          </td>
+          <td>
+            {{order.createdAt|date:'MMMM, dd yyyy'}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </body>
+</html>

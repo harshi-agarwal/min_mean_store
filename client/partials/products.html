@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div ng-controller="productsController">
+      <div class="" style="color:blue;">
+        <h2 >Add a product</h2>
+      </div>
+
+      <form class="form-horizontal">
+        <div class="form-group">
+        <label class="control-label col-sm-2" for="Name">Name:</label>
+        <div class="col-sm-8">
+        <input type="text" class="form-control" ng-model="newproduct.name" placeholder="name..">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="Image Url">Image Url:</label>
+        <div class="col-sm-8">
+        <input type="text" class="form-control" ng-model="newproduct.imgurl" placeholder="image url">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="Description">Description:</label>
+        <div class="col-sm-8">
+        <textarea ng-model="newproduct.desc" class="form-control" rows="8" cols="40" placeholder="description"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="Quantity">Quantity:</label>
+        <div class="col-sm-8">
+        <input type="text" class="form-control" ng-model="newproduct.quantity" placeholder="Initial Quantity">
+      </div>
+      </div>
+      <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default" ng-click="addproduct()">Add a new product</button>
+    </div>
+  </div>
+</form>
+      <div ng-repeat='product in products|limitTo:7' style='display:inline-block; height:"200" width:"100"'>
+
+        <img ng-src="{{product.imgurl}}" height="100" width="100" alt="img"  style="display:inline-block;"/>
+
+            <span>
+        {{product.name}}
+        ({{product.quantity}}left)
+
+      </span>
+    </div>
+  </body>
+</html>
